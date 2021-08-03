@@ -1,4 +1,5 @@
 {
+  "name": "coins",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
@@ -8,7 +9,9 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.15.5",
     "@react-native-community/masked-view": "0.1.10",
+    "@react-navigation/bottom-tabs": "^5.11.11",
     "@react-navigation/native": "^5.9.4",
     "@react-navigation/stack": "^5.14.5",
     "expo": "~42.0.1",
@@ -44,7 +47,10 @@
       "standard",
       "standard-jsx",
       "standard-react"
-    ]
+    ],
+    "rules": {
+      "camelcase": "off"
+    }
   },
   "private": true
 }

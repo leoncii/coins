@@ -1,12 +1,11 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
-import { CoinsScreen } from './CoinsScreen'
-import { CoinDetailScreen } from '../coinDetail/CoinDetailScreen'
-import { Colors } from '../../res/Colors'
+import { FavoritesScreen } from './favoritesScreen'
+import { Colors } from '../../res'
 
 const Stack = createStackNavigator()
 
-export const CoinsStack = () => {
+export const FavsStack = () => {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -17,12 +16,8 @@ export const CoinsStack = () => {
       }}
     >
       <Stack.Screen
-        name='Coins'
-        component={CoinsScreen}
-      />
-      <Stack.Screen
-        name='Coin Detail'
-        component={CoinDetailScreen}
+        name='Favorites'
+        component={FavoritesScreen}
       />
     </Stack.Navigator>
   )

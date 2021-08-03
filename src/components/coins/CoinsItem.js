@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Platform, Pressable } from 'react-native'
 import { Colors, Fonts } from '../../res/'
 import { Arrow } from '../../assets/arrow.js'
 
-export const CoinsItem = ({ item: { item }, onPress }) => {
+export const CoinsItem = ({ onPress, item }) => {
   const { symbol, name, price_usd, percent_change_1h } = item
 
   return (

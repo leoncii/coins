@@ -1,16 +1,25 @@
 import { useState, useEffect } from 'react'
 
-export function useGetCoins ({ url }) {
+export const useMarkets = ({ coinId }) => {
+  const URL_MARKET = `https://api.coinlore.net/api/coin/markets/?id=${coinId}`
+  const { coins } = useCoins({ url: URL_MARKET })
+  return { market: coins }
+}
+
+export function useCoins ({ url }) {
   const [coins, setCoins] = useState([])
+  const abortController = new window.AbortController()
+  const signal = abortController.signal
 
   useEffect(() => {
-    window.fetch(url)
+    window.fetch(url, { signal })
       .then(res => res.json())
       .then(json => {
-        const { data } = json
+        const data = json
         setCoins(data)
       })
       .catch(e => new Error(e))
+    return () => abortController.abort()
   }, [url])
 
   return { coins }
