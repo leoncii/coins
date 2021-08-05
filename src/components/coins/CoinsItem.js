@@ -1,20 +1,31 @@
 import React from 'react'
-import { View, Text, StyleSheet, Platform, Pressable } from 'react-native'
+import { View, Text, StyleSheet, Platform, Pressable, Image } from 'react-native'
 import { Colors, Fonts } from '../../res/'
 import { Arrow } from '../../assets/arrow.js'
+import { getSymbolIcon } from '../../lib/getSymbolIcon'
 
 export const CoinsItem = ({ onPress, item }) => {
   const { symbol, name, price_usd, percent_change_1h } = item
+  const icon = getSymbolIcon(name)
 
   return (
     <Pressable onPress={() => onPress(item)} style={styles.container}>
       <View style={styles.row}>
+        <Image
+          style={styles.icon}
+          source={{
+            uri: icon
+          }}
+        />
         <Text style={styles.symbolText}>{symbol}</Text>
-        <Text style={styles.nameText}>{name}</Text>
-        <Text style={styles.price}>{`$${price_usd}`}</Text>
+        <Text style={styles.price}>{`$ ${price_usd}`}</Text>
       </View>
       <View style={styles.row}>
-        <Text style={styles.percent}> {percent_change_1h}</Text>
+        {
+          percent_change_1h > 0
+            ? <Text style={styles.green}> {percent_change_1h} %</Text>
+            : <Text style={styles.red}> {percent_change_1h} %</Text>
+        }
         <Arrow percent_change_1h={percent_change_1h} />
       </View>
     </Pressable>
@@ -36,20 +47,30 @@ const styles = StyleSheet.create({
   },
   symbolText: {
     color: Colors.white,
-    fontSize: Fonts.md,
-    marginRight: 12
-  },
-  nameText: {
-    color: Colors.white,
     fontSize: Fonts.sm,
-    marginRight: 12
+    marginRight: Fonts.sm,
+    width: 55,
+    marginLeft: Fonts.sm
   },
-  percent: {
-    color: Colors.white,
-    fontSize: Fonts.sm
+  green: {
+    color: Colors.green,
+    fontSize: Fonts.sm,
+    fontWeight: Fonts.bold
+  },
+  red: {
+    color: Colors.red,
+    fontSize: Fonts.sm,
+    fontWeight: Fonts.bold
   },
   price: {
     color: Colors.white,
-    fontSize: 14
+    fontSize: Fonts.md,
+    fontWeight: Fonts.bold,
+    backgroundColor: Colors.blackPearl,
+    marginLeft: Fonts.lg
+  },
+  icon: {
+    width: 25,
+    height: 25
   }
 })

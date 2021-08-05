@@ -11,7 +11,6 @@ export const storeData = async ({ key, value }) => {
 }
 
 export const getStorage = async ({ key }) => {
-  console.log('KEY', key)
   try {
     if (key.length < 2) {
       return false

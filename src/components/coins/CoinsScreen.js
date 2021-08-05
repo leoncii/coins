@@ -1,9 +1,10 @@
 import React, { useState, useMemo } from 'react'
-import { View, StyleSheet, FlatList, ActivityIndicator, Text } from 'react-native'
+import { View, StyleSheet, FlatList, ActivityIndicator, Text, Platform } from 'react-native'
 import { useCoins } from '../../lib/hooks'
 import { CoinsItem } from './CoinsItem'
 import { Colors } from '../../res/Colors'
 import { CoinsSearch } from './CoinsSearch'
+import { Fonts } from '../../res'
 
 const URL_COINS = 'https://api.coinlore.net/api/tickers/'
 export function CoinsScreen ({ navigation }) {
@@ -30,6 +31,11 @@ export function CoinsScreen ({ navigation }) {
   return (
     <View style={styles.container}>
       <CoinsSearch onChange={handleSearch} query={query} onQuery={setQuery} />
+      <View style={styles.head}>
+        <Text style={styles.headText}>Coin</Text>
+        <Text style={styles.headText}>Price</Text>
+        <Text style={styles.headText}>1h %</Text>
+      </View>
       {
           coinsFiltered?.length === 0 && <Text style={styles.titleText}>No hay resultados</Text>
         }
@@ -55,8 +61,25 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.charade,
     shadowOpacity: 0
   },
+  head: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingTop: 12,
+    paddingBottom: 12,
+    paddingRight: 40,
+    marginLeft: Platform.OS === 'ios' ? 16 : 0,
+    paddingLeft: Platform.OS === 'ios' ? 0 : 16
+  },
+  headText: {
+    color: '#00ffff',
+    width: 55,
+    fontSize: Fonts.md,
+    fontWeight: Fonts.bold,
+    textAlign: 'center',
+    backgroundColor: Colors.blackPearl
+  },
   titleText: {
-    color: '#fff',
+    color: Colors.white,
     textAlign: 'center'
   },
   btn: {
@@ -66,7 +89,7 @@ const styles = StyleSheet.create({
     margin: 16
   },
   btnText: {
-    color: '#fff',
+    color: Colors.white,
     textAlign: 'center'
   },
   activity: {

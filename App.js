@@ -4,6 +4,7 @@ import { CoinsStack } from './src/components/coins/CoinsStack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { FavsStack } from './src/components/FavsStack'
 import { Colors } from './src/res/'
+
 import { Home } from './src/assets/home'
 import { Favs } from './src/assets/fav'
 
@@ -25,7 +26,7 @@ export default function App () {
           name='Home'
           component={CoinsStack}
           options={{
-            tabBarIcon: () => <Home />
+            tabBarIcon: ({ focused }) => <Home focused={focused} />
           }}
         />
 
@@ -33,7 +34,7 @@ export default function App () {
           name='Favorites'
           component={FavsStack}
           options={{
-            tabBarIcon: () => <Favs />
+            tabBarIcon: ({ focused }) => <Favs focused={focused} />
           }}
         />
 

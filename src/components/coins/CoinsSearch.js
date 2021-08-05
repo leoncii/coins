@@ -1,10 +1,11 @@
 import React from 'react'
 import { TextInput, Platform, View, StyleSheet } from 'react-native'
-import { Colors } from '../../res'
+import { Colors, Fonts } from '../../res'
+import { Coin } from '../../assets/coin'
 
 export function CoinsSearch ({ onChange, query }) {
   return (
-    <View>
+    <View style={styles.searchSection}>
       <TextInput
         style={[styles.textInput,
           Platform.OS === 'ios'
@@ -13,18 +14,28 @@ export function CoinsSearch ({ onChange, query }) {
         ]}
         onChangeText={(query) => onChange(query)}
         value={query}
-        placeholder='Search Coin'
+        placeholder='Search Coin...'
+        inlineImageLeft={() => <Coin />}
       />
+      <Coin />
     </View>
   )
 }
 
 const styles = StyleSheet.create({
+  searchSection: {
+    minHeight: 46,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   textInput: {
     height: 46,
     backgroundColor: 'rgba(0, 0, 0, 0.2)',
     paddingLeft: 16,
-    color: '#fff'
+    fontSize: Fonts.md,
+    color: '#fff',
+    width: '100%'
   },
   textInputAndroid: {
     borderBottomWidth: 2,

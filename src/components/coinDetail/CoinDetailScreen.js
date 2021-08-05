@@ -4,6 +4,7 @@ import { Colors, Fonts } from '../../res/'
 import { useMarkets } from '../../lib/hooks/'
 import { CoinMarketItem } from './CoinMarketItem'
 import { storeData, removeStorage, getStorage } from '../../lib/storage'
+import { getSymbolIcon } from '../../lib/getSymbolIcon'
 
 export function CoinDetailScreen ({ navigation, route }) {
   const [fav, setFav] = useState(false)
@@ -11,13 +12,7 @@ export function CoinDetailScreen ({ navigation, route }) {
   const { params } = route
   const { symbol, name, market_cap_usd, volume24, percent_change_24h, id } = params.coin
   const { market } = useMarkets({ coinId: id })
-
-  const getSymbolIcon = (symbolStr) => {
-    if (symbolStr) {
-      const s = symbolStr.toLowerCase().replace(' ', '/')
-      return `https://c1.coinlore.com/img/25x25/${s}.png`
-    }
-  }
+  const icon = getSymbolIcon(name)
 
   const getSections = ({
     market_cap_usd,
@@ -115,7 +110,7 @@ export function CoinDetailScreen ({ navigation, route }) {
           <Image
             style={styles.iconImg}
             source={{
-              uri: getSymbolIcon(name)
+              uri: icon
             }}
           />
           <Text style={styles.titleText}>{name}</Text>
