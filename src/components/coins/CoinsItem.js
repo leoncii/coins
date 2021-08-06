@@ -21,11 +21,7 @@ export const CoinsItem = ({ onPress, item }) => {
         <Text style={styles.price}>{`$ ${price_usd}`}</Text>
       </View>
       <View style={styles.row}>
-        {
-          percent_change_1h > 0
-            ? <Text style={styles.green}> {percent_change_1h} %</Text>
-            : <Text style={styles.red}> {percent_change_1h} %</Text>
-        }
+        <Text style={percent_change_1h > 0 ? styles.green : styles.red}> {percent_change_1h} %</Text>
         <Arrow percent_change_1h={percent_change_1h} />
       </View>
     </Pressable>

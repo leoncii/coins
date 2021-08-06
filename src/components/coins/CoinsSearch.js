@@ -15,7 +15,7 @@ export function CoinsSearch ({ onChange, query }) {
         onChangeText={(query) => onChange(query)}
         value={query}
         placeholder='Search Coin...'
-        inlineImageLeft={() => <Coin />}
+        placeholderTextColor='#00ffff'
       />
       <Coin />
     </View>
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.2)',
     paddingLeft: 16,
     fontSize: Fonts.md,
-    color: '#fff',
+    color: '#00ffff',
     width: '100%'
   },
   textInputAndroid: {

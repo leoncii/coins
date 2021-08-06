@@ -32,7 +32,7 @@ export function CoinsScreen ({ navigation }) {
     <View style={styles.container}>
       <CoinsSearch onChange={handleSearch} query={query} onQuery={setQuery} />
       <View style={styles.head}>
-        <Text style={styles.headText}>Coin</Text>
+        <Text style={styles.headText}>Coins</Text>
         <Text style={styles.headText}>Price</Text>
         <Text style={styles.headText}>1h %</Text>
       </View>
@@ -50,7 +50,6 @@ export function CoinsScreen ({ navigation }) {
             keyExtractor={item => `${item.id}${item.name}`}
           />
           }
-
     </View>
   )
 }
