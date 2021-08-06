@@ -6,7 +6,7 @@ export function CoinMarketItem ({ item }) {
   return (
     <View style={styles.container}>
       <Text style={styles.nameText}>{item.name}</Text>
-      <Text style={styles.priceText}>{item.price_usd}</Text>
+      <Text style={styles.priceText}>{item.price_usd} $</Text>
     </View>
   )
 }
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   },
   nameText: {
     color: Colors.white,
-    fontWeight: Fonts.bold
+    fontSize: Fonts.sm
   },
   priceText: {
     color: Colors.white

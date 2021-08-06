@@ -10,14 +10,15 @@ export function CoinDetailScreen ({ navigation, route }) {
   const [fav, setFav] = useState(false)
   // const [key, setKey] = useState('')
   const { params } = route
-  const { symbol, name, market_cap_usd, volume24, percent_change_24h, id } = params.coin
+  const { symbol, name, market_cap_usd, volume24, percent_change_24h, id, price_usd } = params.coin
   const { market } = useMarkets({ coinId: id })
   const icon = getSymbolIcon(name)
 
   const getSections = ({
     market_cap_usd,
     volume24,
-    percent_change_24h
+    percent_change_24h,
+    price_usd
   }) => {
     const sections = [
       {
@@ -31,6 +32,10 @@ export function CoinDetailScreen ({ navigation, route }) {
       {
         title: 'Change 24',
         data: [percent_change_24h]
+      },
+      {
+        title: 'Price',
+        data: [price_usd]
       }
     ]
     return sections
@@ -113,7 +118,15 @@ export function CoinDetailScreen ({ navigation, route }) {
               uri: icon
             }}
           />
-          <Text style={styles.titleText}>{name}</Text>
+          <Text
+            style={[
+              styles.titleText,
+              percent_change_24h > 0
+                ? styles.green
+                : styles.red]}
+          >
+            {name}
+          </Text>
         </View>
         <Pressable
           onPress={handleFavorite}
@@ -126,20 +139,19 @@ export function CoinDetailScreen ({ navigation, route }) {
         >
           <Text style={styles.btnFavoriteText}>{fav ? 'Remove Favoritos' : ' Añadir Favorito.'}</Text>
         </Pressable>
-
       </View>
 
       <SectionList
         style={styles.section}
-        sections={getSections({ volume24, market_cap_usd, percent_change_24h })}
+        sections={getSections({ volume24, market_cap_usd, percent_change_24h, price_usd })}
         renderItem={({ item }) => {
           return (
             <View style={styles.sectionItem}>
-              <Text style={styles.sectionText}>{item}</Text>
+              <Text style={styles.sectionItemText}>{item} $</Text>
             </View>
           )
         }}
-        keyExtractor={(item) => item}
+        keyExtractor={(item, index) => item + index}
         renderSectionHeader={({ section }) => {
           return (
             <View style={styles.sectionHeader}>
@@ -177,7 +189,14 @@ const styles = StyleSheet.create({
   titleText: {
     fontSize: Fonts.lg,
     color: Colors.white,
-    fontWeight: Fonts.bold
+    fontWeight: Fonts.bold,
+    marginLeft: Fonts.md
+  },
+  green: {
+    color: Colors.red
+  },
+  red: {
+    color: Colors.red
   },
   section: {
     maxHeight: 250
@@ -194,17 +213,23 @@ const styles = StyleSheet.create({
     color: Colors.white,
     fontSize: 11
   },
+  sectionItemText: {
+    color: Colors.white,
+    fontSize: Fonts.md
+  },
   sectionText: {
     color: Colors.white,
     fontSize: Fonts.md,
-    fontWeight: Fonts.bold
+    fontWeight: Fonts.bold,
+    backgroundColor: Colors.blackPearl
   },
   iconImg: {
     width: 25,
     height: 25
   },
   row: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    alignItems: 'center'
   },
   list: {
     maxHeight: 100,
@@ -214,6 +239,7 @@ const styles = StyleSheet.create({
     color: Colors.white,
     fontSize: Fonts.lg,
     marginBottom: 16,
+    marginTop: 16,
     fontWeight: Fonts.bold,
     marginLeft: 16
   },

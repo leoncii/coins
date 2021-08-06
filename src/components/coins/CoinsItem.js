@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
     fontSize: Fonts.sm,
     marginRight: Fonts.sm,
     width: 55,
+    alignSelf: 'center',
     marginLeft: Fonts.sm
   },
   green: {
