@@ -1,7 +1,7 @@
 import React from 'react'
 import { TextInput, Platform, View, StyleSheet } from 'react-native'
 import { Colors, Fonts } from '../../res'
-import { Coin } from '../../assets/coin'
+import { Lupe } from '../../assets/lupe'
 
 export function CoinsSearch ({ onChange, query }) {
   return (
@@ -14,10 +14,10 @@ export function CoinsSearch ({ onChange, query }) {
         ]}
         onChangeText={(query) => onChange(query)}
         value={query}
+        placeholderTextColor='#ddd'
         placeholder='Search Coin...'
-        placeholderTextColor='#00ffff'
       />
-      <Coin />
+      <Lupe />
     </View>
   )
 }
@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     height: 46,
     backgroundColor: 'rgba(0, 0, 0, 0.2)',
     paddingLeft: 16,
+    letterSpacing: 0.5,
     fontSize: Fonts.md,
     color: '#00ffff',
     width: '100%'

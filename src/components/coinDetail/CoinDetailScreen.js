@@ -55,7 +55,7 @@ export function CoinDetailScreen ({ navigation, route }) {
   }
   const removeFavorite = async () => {
     const key = `fav-${id}`
-    Alert.alert('Remover de favoritos', '¿Estás seguro?', [
+    Alert.alert('Remove from favorites', '¿Are you sure?', [
       {
         text: 'Cancelar',
         onPress: () => {},

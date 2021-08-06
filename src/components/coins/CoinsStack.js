@@ -17,7 +17,7 @@ export const CoinsStack = () => {
       }}
     >
       <Stack.Screen
-        name='Coins'
+        name='Home'
         component={CoinsScreen}
       />
       <Stack.Screen

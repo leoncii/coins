@@ -7,14 +7,17 @@ import { CoinsSearch } from './CoinsSearch'
 import { Fonts } from '../../res'
 
 const URL_COINS = 'https://api.coinlore.net/api/tickers/'
-export function CoinsScreen ({ navigation }) {
+
+export function CoinsScreen ({ navigation, ...props }) {
   const { coins } = useCoins({ url: URL_COINS })
   const [query, setQuery] = useState('')
 
   const { data } = coins
+
   const onPress = (coin) => {
     navigation.navigate('Coin Detail', { coin })
   }
+
   const handleSearch = (query) => {
     setQuery(query)
   }

@@ -20,12 +20,11 @@ export function FavoritesScreen ({ navigation }) {
     }
   }
 
-  const handlePress = (coin) => {
+  const onPress = (coin) => {
     navigation.navigate('Coin Detail', {
       coin
     })
   }
-
   useEffect(() => {
     let unsubscribe = true
     unsubscribe = navigation.addListener('focus', () => {
@@ -50,7 +49,7 @@ export function FavoritesScreen ({ navigation }) {
               keyExtractor={item => `${item.id}${item.name}${item.symbol}`}
               data={favoritesList}
               renderItem={({ item }) =>
-                <CoinsItem item={item} onPress={(item) => handlePress(item)} />}
+                <CoinsItem item={item} onPress={(item) => onPress(item)} />}
             />
           : null
       }
