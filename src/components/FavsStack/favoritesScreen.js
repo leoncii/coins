@@ -46,7 +46,7 @@ export function FavoritesScreen ({ navigation }) {
       {
         favoritesList.length > 0
           ? <FlatList
-              keyExtractor={item => `${item.id}${item.name}${item.symbol}`}
+              keyExtractor={item => `${item.name}${item.symbol}`}
               data={favoritesList}
               renderItem={({ item }) =>
                 <CoinsItem item={item} onPress={(item) => onPress(item)} />}

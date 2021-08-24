@@ -15,9 +15,8 @@ export function useCoins ({ url }) {
     window.fetch(url, { signal })
       .then(res => res.json())
       .then(json => {
-        console.log("[JSON]",json)
         const data = json
-        
+
         setCoins(data)
       })
       .catch(e => new Error(e))
