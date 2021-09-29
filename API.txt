@@ -1,1 +1,1 @@
-httpswww.coinlore.comcryptocurrency-data-api
+https://www.coinlore.comcryptocurrency-data-api
