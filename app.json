@@ -1,5 +1,6 @@
 {
   "expo": {
+    "runtimeVersion": "2.718",
     "name": "Trading View",
     "slug": "Trading-View",
     "version": "2.0.0",
