@@ -1,6 +1,5 @@
 {
   "expo": {
-    "runtimeVersion": "2.718",
     "name": "Trading View",
     "slug": "Trading-View",
     "version": "2.0.0",
@@ -21,6 +20,7 @@
       "supportsTablet": true
     },
     "android": {
+      "versionCode": 2,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#eeeeee"
