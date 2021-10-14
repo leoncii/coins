@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Trading View",
-    "slug": "Trading-View",
+    "name": "Crypto Market",
+    "slug": "Crypto Market",
     "version": "2.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -20,12 +20,12 @@
       "supportsTablet": true
     },
     "android": {
-      "versionCode": 4,
+      "versionCode": 5,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#eeeeee"
       },
-      "package": "com.LTB_144.TradingView"
+      "package": "com.LTB_144.CryptoMarket"
     },
     "web": {
       "favicon": "./assets/favicon.png"
